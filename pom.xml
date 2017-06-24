@@ -40,7 +40,8 @@
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
-                        <include>**/*Spec.java</include>
+                        <include>**/*Specs.groovy</include>
+                        <include>**/*Should.groovy</include>
                     </includes>
                 </configuration>
             </plugin>
