@@ -1,5 +1,7 @@
 package com.finix.kata.groovy;
 
+import java.util.List;
+
 /**
  * Created by alex on 6/18/17.
  */
@@ -14,16 +16,16 @@ public class Account {
     }
 
 
-    public void deposit(double amount) {
+    public void deposit(int amount) {
         repository.depositTransaction(amount);
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(int amount) {
         repository.withdrawTransaction(amount);
     }
 
     public void printStatement() {
-        Transaction[] transactions =  repository.allTransactions();
+        List<Transaction> transactions =  repository.allTransactions();
         statementPrinter.print(transactions);
 
     }

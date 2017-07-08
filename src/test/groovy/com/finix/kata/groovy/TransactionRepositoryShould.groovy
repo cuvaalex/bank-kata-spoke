@@ -7,22 +7,41 @@ import spock.lang.Specification
  */
 class TransactionRepositoryShould extends Specification {
 
+    String TODAY = "25/12/2016"
+    Clock clock = Mock()
 
     def "should stock a deposit transaction"() {
         setup:
-            def clock = Mock()
             def repository = new TransactionRepository(clock)
-            def transactions = Arrays.asList(new Transaction("25/02/2017", 100));
+            def transactions = Arrays.asList(new Transaction(TODAY, 100))
 
 
         when:
-            clock.TODAY >> "25/02/2017"
+            clock.nowToString() >> TODAY
             repository.depositTransaction(100)
 
 
         then:
-            repository.allTransactions().length == 1
+            repository.allTransactions().size() == 1
             repository.allTransactions() == transactions
 
     }
+
+    def "should stock a withdraw transaction"() {
+        setup:
+        def repository = new TransactionRepository(clock)
+        def transactions = Arrays.asList(new Transaction(TODAY, -100))
+
+
+        when:
+        clock.nowToString() >> TODAY
+        repository.withdrawTransaction(100)
+
+
+        then:
+        repository.allTransactions().size() == 1
+        repository.allTransactions() == transactions
+
+    }
+
 }

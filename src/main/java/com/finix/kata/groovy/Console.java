@@ -5,6 +5,6 @@ package com.finix.kata.groovy;
  */
 public class Console {
     public void printline(String text) {
-        throw new UnsupportedOperationException();
+        System.out.println(text);
     }
 }

@@ -1,19 +1,30 @@
 package com.finix.kata.groovy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by alex on 6/18/17.
  */
 public class TransactionRepository {
-    public void depositTransaction(double amount) {
-        throw new UnsupportedOperationException();
+
+    private Clock clock;
+    private List<Transaction> transactions = new ArrayList<Transaction>();
+
+    public TransactionRepository(Clock clock){
+        this.clock = clock;
     }
 
-    public void withdrawTransaction(double amount) {
-        throw new UnsupportedOperationException();
+    public void depositTransaction(int amount) {
+        transactions.add(new Transaction(clock.nowToString(), amount));
     }
 
-    public Transaction[] allTransactions() {
-        throw new UnsupportedOperationException();
+    public void withdrawTransaction(int amount) {
+        transactions.add(new Transaction(clock.nowToString(), -amount));
+    }
+
+    public List<Transaction> allTransactions() {
+        return transactions;
     }
 
 }

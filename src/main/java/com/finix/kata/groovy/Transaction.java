@@ -4,10 +4,10 @@ package com.finix.kata.groovy;
  * Created by alex on 6/24/17.
  */
 public class Transaction {
-    private final String date;
-    private final double amount;
+    protected final String date;
+    protected final int amount;
 
-    public Transaction(String date, double amount){
+    public Transaction(String date, int amount){
         this.date = date;
         this.amount = amount;
     }
@@ -19,7 +19,7 @@ public class Transaction {
 
         Transaction that = (Transaction) o;
 
-        if (Double.compare(that.amount, amount) != 0) return false;
+        if (Integer.compare(that.amount, amount) != 0) return false;
         return date != null ? date.equals(that.date) : that.date == null;
     }
 
